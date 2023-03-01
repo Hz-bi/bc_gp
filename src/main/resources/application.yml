@@ -1,0 +1,30 @@
+server:
+  port: 8989 #指定端口
+  servlet:
+    context-path: /ems-jsp #指定项目名
+
+
+
+## 配置jsp模板
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ems-jsp?characterEncoding=UTF-8
+    username: root
+    password: 1234
+
+#配置mybatis
+mybatis:
+  mapper-locations: classpath:com/baizhi/mapper/*.xml
+  type-aliases-package: com.baizhi.entity
+
+#配置日志使用
+logging:
+  level:
+    root: info
+    com.baizhi: debug #指定包日志

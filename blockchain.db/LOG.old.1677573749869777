@@ -1,0 +1,176 @@
+2023/02/28-16:39:20.469433 3fac RocksDB version: 5.9.2
+2023/02/28-16:39:20.469589 3fac Git sha rocksdb_build_git_sha:@004237e62790320d8e630456cbeb6f4a1f3579c2@
+2023/02/28-16:39:20.469663 3fac Compile date Jan  3 2018
+2023/02/28-16:39:20.469727 3fac DB SUMMARY
+2023/02/28-16:39:20.469994 3fac SST files in blockchain.db dir, Total Num: 0, files: 
+2023/02/28-16:39:20.470058 3fac Write Ahead Log file in blockchain.db: 
+2023/02/28-16:39:20.470112 3fac                         Options.error_if_exists: 0
+2023/02/28-16:39:20.470165 3fac                       Options.create_if_missing: 1
+2023/02/28-16:39:20.470217 3fac                         Options.paranoid_checks: 1
+2023/02/28-16:39:20.470269 3fac                                     Options.env: 000002C7BCAEE0A0
+2023/02/28-16:39:20.470456 3fac                                Options.info_log: 000002C7BD7FB2F0
+2023/02/28-16:39:20.470489 3fac                Options.max_file_opening_threads: 16
+2023/02/28-16:39:20.470515 3fac                              Options.statistics: 0000000000000000
+2023/02/28-16:39:20.470541 3fac                               Options.use_fsync: 0
+2023/02/28-16:39:20.470567 3fac                       Options.max_log_file_size: 0
+2023/02/28-16:39:20.470592 3fac                  Options.max_manifest_file_size: 18446744073709551615
+2023/02/28-16:39:20.470625 3fac                   Options.log_file_time_to_roll: 0
+2023/02/28-16:39:20.470652 3fac                       Options.keep_log_file_num: 1000
+2023/02/28-16:39:20.470677 3fac                    Options.recycle_log_file_num: 0
+2023/02/28-16:39:20.470702 3fac                         Options.allow_fallocate: 1
+2023/02/28-16:39:20.470726 3fac                        Options.allow_mmap_reads: 0
+2023/02/28-16:39:20.470751 3fac                       Options.allow_mmap_writes: 0
+2023/02/28-16:39:20.470775 3fac                        Options.use_direct_reads: 0
+2023/02/28-16:39:20.470800 3fac                        Options.use_direct_io_for_flush_and_compaction: 0
+2023/02/28-16:39:20.470824 3fac          Options.create_missing_column_families: 0
+2023/02/28-16:39:20.470849 3fac                              Options.db_log_dir: 
+2023/02/28-16:39:20.470874 3fac                                 Options.wal_dir: blockchain.db
+2023/02/28-16:39:20.470898 3fac                Options.table_cache_numshardbits: 6
+2023/02/28-16:39:20.470923 3fac                      Options.max_subcompactions: 1
+2023/02/28-16:39:20.470947 3fac                  Options.max_background_flushes: -1
+2023/02/28-16:39:20.470972 3fac                         Options.WAL_ttl_seconds: 0
+2023/02/28-16:39:20.470997 3fac                       Options.WAL_size_limit_MB: 0
+2023/02/28-16:39:20.471021 3fac             Options.manifest_preallocation_size: 4194304
+2023/02/28-16:39:20.471046 3fac                     Options.is_fd_close_on_exec: 1
+2023/02/28-16:39:20.471071 3fac                   Options.advise_random_on_open: 1
+2023/02/28-16:39:20.471095 3fac                    Options.db_write_buffer_size: 0
+2023/02/28-16:39:20.471120 3fac                    Options.write_buffer_manager: 000002C7BD828C20
+2023/02/28-16:39:20.471145 3fac         Options.access_hint_on_compaction_start: 1
+2023/02/28-16:39:20.471169 3fac  Options.new_table_reader_for_compaction_inputs: 0
+2023/02/28-16:39:20.471194 3fac               Options.compaction_readahead_size: 0
+2023/02/28-16:39:20.471218 3fac           Options.random_access_max_buffer_size: 1048576
+2023/02/28-16:39:20.471243 3fac                      Options.use_adaptive_mutex: 0
+2023/02/28-16:39:20.471268 3fac                            Options.rate_limiter: 0000000000000000
+2023/02/28-16:39:20.471292 3fac     Options.sst_file_manager.rate_bytes_per_sec: 0
+2023/02/28-16:39:20.471317 3fac                       Options.wal_recovery_mode: 2
+2023/02/28-16:39:20.471342 3fac                  Options.enable_thread_tracking: 0
+2023/02/28-16:39:20.471366 3fac                  Options.enable_pipelined_write: 0
+2023/02/28-16:39:20.471391 3fac         Options.allow_concurrent_memtable_write: 1
+2023/02/28-16:39:20.471415 3fac      Options.enable_write_thread_adaptive_yield: 1
+2023/02/28-16:39:20.471495 3fac             Options.write_thread_max_yield_usec: 100
+2023/02/28-16:39:20.471523 3fac            Options.write_thread_slow_yield_usec: 3
+2023/02/28-16:39:20.471548 3fac                               Options.row_cache: None
+2023/02/28-16:39:20.471573 3fac                              Options.wal_filter: None
+2023/02/28-16:39:20.471598 3fac             Options.avoid_flush_during_recovery: 0
+2023/02/28-16:39:20.471628 3fac             Options.allow_ingest_behind: 0
+2023/02/28-16:39:20.471654 3fac             Options.preserve_deletes: 0
+2023/02/28-16:39:20.471678 3fac             Options.concurrent_prepare: 0
+2023/02/28-16:39:20.471703 3fac             Options.manual_wal_flush: 0
+2023/02/28-16:39:20.471727 3fac             Options.seq_per_batch: 0
+2023/02/28-16:39:20.471762 3fac             Options.max_background_jobs: 2
+2023/02/28-16:39:20.471788 3fac             Options.max_background_compactions: -1
+2023/02/28-16:39:20.471812 3fac             Options.avoid_flush_during_shutdown: 0
+2023/02/28-16:39:20.471837 3fac           Options.writable_file_max_buffer_size: 1048576
+2023/02/28-16:39:20.471862 3fac             Options.delayed_write_rate : 16777216
+2023/02/28-16:39:20.471886 3fac             Options.max_total_wal_size: 0
+2023/02/28-16:39:20.471911 3fac             Options.delete_obsolete_files_period_micros: 21600000000
+2023/02/28-16:39:20.471936 3fac                   Options.stats_dump_period_sec: 600
+2023/02/28-16:39:20.471960 3fac                          Options.max_open_files: -1
+2023/02/28-16:39:20.471990 3fac                          Options.bytes_per_sync: 0
+2023/02/28-16:39:20.472026 3fac                      Options.wal_bytes_per_sync: 0
+2023/02/28-16:39:20.472073 3fac Compression algorithms supported:
+2023/02/28-16:39:20.472135 3fac 	Snappy supported: 0
+2023/02/28-16:39:20.472168 3fac 	Zlib supported: 0
+2023/02/28-16:39:20.472193 3fac 	Bzip supported: 0
+2023/02/28-16:39:20.472217 3fac 	LZ4 supported: 0
+2023/02/28-16:39:20.472242 3fac 	ZSTDNotFinal supported: 0
+2023/02/28-16:39:20.472266 3fac 	ZSTD supported: 0
+2023/02/28-16:39:20.472296 3fac Fast CRC32 supported: Supported on x86Not supported on x86
+2023/02/28-16:39:20.474877 3fac [c:\users\aretter\code\rocksdb\db\db_impl_open.cc:227] Creating manifest 1 
+2023/02/28-16:39:20.486904 3fac [c:\users\aretter\code\rocksdb\db\version_set.cc:2835] Recovering from manifest file: MANIFEST-000001
+2023/02/28-16:39:20.487156 3fac [c:\users\aretter\code\rocksdb\db\column_family.cc:413] --------------- Options for column family [default]:
+2023/02/28-16:39:20.487190 3fac               Options.comparator: leveldb.BytewiseComparator
+2023/02/28-16:39:20.487216 3fac           Options.merge_operator: None
+2023/02/28-16:39:20.487241 3fac        Options.compaction_filter: None
+2023/02/28-16:39:20.487273 3fac        Options.compaction_filter_factory: None
+2023/02/28-16:39:20.487298 3fac         Options.memtable_factory: SkipListFactory
+2023/02/28-16:39:20.487323 3fac            Options.table_factory: BlockBasedTable
+2023/02/28-16:39:20.487392 3fac            table_factory options:   flush_block_policy_factory: FlushBlockBySizePolicyFactory (000002C7BCE5EAC0)
+  cache_index_and_filter_blocks: 0
+  cache_index_and_filter_blocks_with_high_priority: 0
+  pin_l0_filter_and_index_blocks_in_cache: 0
+  index_type: 0
+  hash_index_allow_collision: 1
+  checksum: 1
+  no_block_cache: 0
+  block_cache: 000002C7BD3EFC50
+  block_cache_name: LRUCache
+  block_cache_options:
+    capacity : 8388608
+    num_shard_bits : 4
+    strict_capacity_limit : 0
+    high_pri_pool_ratio: 0.000
+  block_cache_compressed: 0000000000000000
+  persistent_cache: 0000000000000000
+  block_size: 4096
+  block_size_deviation: 10
+  block_restart_interval: 16
+  index_block_restart_interval: 1
+  metadata_block_size: 4096
+  partition_filters: 0
+  use_delta_encoding: 1
+  filter_policy: nullptr
+  whole_key_filtering: 1
+  verify_compression: 0
+  read_amp_bytes_per_bit: 0
+  format_version: 2
+2023/02/28-16:39:20.487419 3fac        Options.write_buffer_size: 67108864
+2023/02/28-16:39:20.487444 3fac  Options.max_write_buffer_number: 2
+2023/02/28-16:39:20.487593 3fac          Options.compression: NoCompression
+2023/02/28-16:39:20.487631 3fac                  Options.bottommost_compression: Disabled
+2023/02/28-16:39:20.487657 3fac       Options.prefix_extractor: nullptr
+2023/02/28-16:39:20.487682 3fac   Options.memtable_insert_with_hint_prefix_extractor: nullptr
+2023/02/28-16:39:20.487706 3fac             Options.num_levels: 7
+2023/02/28-16:39:20.487731 3fac        Options.min_write_buffer_number_to_merge: 1
+2023/02/28-16:39:20.487755 3fac     Options.max_write_buffer_number_to_maintain: 0
+2023/02/28-16:39:20.487780 3fac            Options.compression_opts.window_bits: -14
+2023/02/28-16:39:20.487805 3fac                  Options.compression_opts.level: -1
+2023/02/28-16:39:20.487830 3fac               Options.compression_opts.strategy: 0
+2023/02/28-16:39:20.487854 3fac         Options.compression_opts.max_dict_bytes: 0
+2023/02/28-16:39:20.487879 3fac      Options.level0_file_num_compaction_trigger: 4
+2023/02/28-16:39:20.487904 3fac          Options.level0_slowdown_writes_trigger: 20
+2023/02/28-16:39:20.487928 3fac              Options.level0_stop_writes_trigger: 36
+2023/02/28-16:39:20.487953 3fac                   Options.target_file_size_base: 67108864
+2023/02/28-16:39:20.487977 3fac             Options.target_file_size_multiplier: 1
+2023/02/28-16:39:20.488002 3fac                Options.max_bytes_for_level_base: 268435456
+2023/02/28-16:39:20.488027 3fac Options.level_compaction_dynamic_level_bytes: 0
+2023/02/28-16:39:20.488051 3fac          Options.max_bytes_for_level_multiplier: 10.000000
+2023/02/28-16:39:20.488082 3fac Options.max_bytes_for_level_multiplier_addtl[0]: 1
+2023/02/28-16:39:20.488107 3fac Options.max_bytes_for_level_multiplier_addtl[1]: 1
+2023/02/28-16:39:20.488131 3fac Options.max_bytes_for_level_multiplier_addtl[2]: 1
+2023/02/28-16:39:20.488156 3fac Options.max_bytes_for_level_multiplier_addtl[3]: 1
+2023/02/28-16:39:20.488181 3fac Options.max_bytes_for_level_multiplier_addtl[4]: 1
+2023/02/28-16:39:20.488206 3fac Options.max_bytes_for_level_multiplier_addtl[5]: 1
+2023/02/28-16:39:20.488230 3fac Options.max_bytes_for_level_multiplier_addtl[6]: 1
+2023/02/28-16:39:20.488255 3fac       Options.max_sequential_skip_in_iterations: 8
+2023/02/28-16:39:20.488279 3fac                    Options.max_compaction_bytes: 1677721600
+2023/02/28-16:39:20.488304 3fac                        Options.arena_block_size: 8388608
+2023/02/28-16:39:20.488329 3fac   Options.soft_pending_compaction_bytes_limit: 68719476736
+2023/02/28-16:39:20.488354 3fac   Options.hard_pending_compaction_bytes_limit: 274877906944
+2023/02/28-16:39:20.488379 3fac       Options.rate_limit_delay_max_milliseconds: 100
+2023/02/28-16:39:20.488404 3fac                Options.disable_auto_compactions: 0
+2023/02/28-16:39:20.488430 3fac                        Options.compaction_style: kCompactionStyleLevel
+2023/02/28-16:39:20.488455 3fac                          Options.compaction_pri: kByCompensatedSize
+2023/02/28-16:39:20.488480 3fac Options.compaction_options_universal.size_ratio: 1
+2023/02/28-16:39:20.488505 3fac Options.compaction_options_universal.min_merge_width: 2
+2023/02/28-16:39:20.488529 3fac Options.compaction_options_universal.max_merge_width: 4294967295
+2023/02/28-16:39:20.488554 3fac Options.compaction_options_universal.max_size_amplification_percent: 200
+2023/02/28-16:39:20.488585 3fac Options.compaction_options_universal.compression_size_percent: -1
+2023/02/28-16:39:20.488619 3fac Options.compaction_options_universal.stop_style: kCompactionStopStyleTotalSize
+2023/02/28-16:39:20.488842 3fac Options.compaction_options_fifo.max_table_files_size: 1073741824
+2023/02/28-16:39:20.488914 3fac Options.compaction_options_fifo.allow_compaction: 0
+2023/02/28-16:39:20.488962 3fac Options.compaction_options_fifo.ttl: 0
+2023/02/28-16:39:20.489004 3fac                   Options.table_properties_collectors: 
+2023/02/28-16:39:20.489042 3fac                   Options.inplace_update_support: 0
+2023/02/28-16:39:20.489081 3fac                 Options.inplace_update_num_locks: 10000
+2023/02/28-16:39:20.489122 3fac               Options.memtable_prefix_bloom_size_ratio: 0.000000
+2023/02/28-16:39:20.489176 3fac   Options.memtable_huge_page_size: 0
+2023/02/28-16:39:20.489236 3fac                           Options.bloom_locality: 0
+2023/02/28-16:39:20.489271 3fac                    Options.max_successive_merges: 0
+2023/02/28-16:39:20.489304 3fac                Options.optimize_filters_for_hits: 0
+2023/02/28-16:39:20.489339 3fac                Options.paranoid_file_checks: 0
+2023/02/28-16:39:20.489379 3fac                Options.force_consistency_checks: 0
+2023/02/28-16:39:20.489514 3fac                Options.report_bg_io_stats: 0
+2023/02/28-16:39:20.492725 3fac [c:\users\aretter\code\rocksdb\db\version_set.cc:3100] Recovered from manifest file:blockchain.db/MANIFEST-000001 succeeded,manifest_file_number is 1, next_file_number is 3, last_sequence is 0, log_number is 0,prev_log_number is 0,max_column_family is 0
+2023/02/28-16:39:20.492771 3fac [c:\users\aretter\code\rocksdb\db\version_set.cc:3108] Column family [default] (ID 0), log number is 0
+2023/02/28-16:39:20.502702 3fac [c:\users\aretter\code\rocksdb\db\db_impl_open.cc:1150] DB pointer 000002C7BC7C25F0
