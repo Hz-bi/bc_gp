@@ -94,18 +94,6 @@
             <artifactId>guava</artifactId>
             <version>24.1.1-jre</version>
         </dependency>
-        <!-- 加密算法 -->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.59</version>
-        </dependency>
-        <!--地址实现 -->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.59</version>
-        </dependency>
         <!-- rocksdb -->
         <dependency>
             <groupId>org.rocksdb</groupId>
