@@ -61,7 +61,8 @@ public class ProofOfWork {
 
         return ByteUtils.merge(
                 prevBlockHashBytes,
-                this.getBlock().getData().getBytes(StandardCharsets.UTF_8),
+//                this.getBlock().getData().getBytes(StandardCharsets.UTF_8),
+                this.getBlock().hashTransaction(),
                 ByteUtils.toBytes(this.getBlock().getTimeStamp()),
                 ByteUtils.toBytes(TARGET_BITS),
                 ByteUtils.toBytes(nonce)
@@ -75,7 +76,7 @@ public class ProofOfWork {
     public PowResult run() {
         long nonce = 0;
         String shaHex = "";
-        System.out.printf("Mining the block containing：%s \n", this.getBlock().getData());
+//        System.out.printf("Mining the block containing：%s \n", this.getBlock().getData());
 
         long startTime = System.currentTimeMillis();
         while (nonce < Long.MAX_VALUE) {

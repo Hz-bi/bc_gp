@@ -4,7 +4,10 @@ package com.groupProject.block;
 
 import com.groupProject.pow.PowResult;
 import com.groupProject.pow.ProofOfWork;
+import com.groupProject.transaction.MerkleTree;
+import com.groupProject.transaction.Transaction;
 import com.groupProject.utils.ByteUtils;
+import com.groupProject.utils.RocksDBUtils;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,10 +30,14 @@ public class Block {
      * 前一个区块的hash值
      */
     private String previousHash;
+//    /**
+//     * 区块数据
+//     */
+//    private String data;
     /**
-     * 区块数据
+     *交易信息
      */
-    private String data;
+    private Transaction[] transactions;
     /**
      * 区块创建时间(单位:秒)
      */
@@ -40,10 +47,17 @@ public class Block {
      */
     private long nonce;
 
-    public Block(String hash, String previousHash, String data, long timeStamp, long nonce) {
+//    public Block(String hash, String previousHash, String data, long timeStamp, long nonce) {
+//        this.hash = hash;
+//        this.previousHash = previousHash;
+//        this.data = data;
+//        this.timeStamp = timeStamp;
+//        this.nonce = nonce;
+//    }
+    public Block(String hash, String previousHash, Transaction[] transactions, long timeStamp, long nonce) {
         this.hash = hash;
         this.previousHash = previousHash;
-        this.data = data;
+        this.transactions = transactions;
         this.timeStamp = timeStamp;
         this.nonce = nonce;
     }
@@ -56,11 +70,19 @@ public class Block {
      * <p> 创建新区块 </p>
      *
      * @param previousHash
-     * @param data
+     * @param transactions
      * @return
      */
-    public static Block newBlock(String previousHash, String data) {
-        Block block = new Block("", previousHash, data, Instant.now().getEpochSecond(), 0);
+//    public static Block newBlock(String previousHash, String data) {
+//        Block block = new Block("", previousHash, data, Instant.now().getEpochSecond(), 0);
+//        ProofOfWork pow = ProofOfWork.newProofOfWork(block);
+//        PowResult powResult = pow.run();
+//        block.setHash(powResult.getHash());
+//        block.setNonce(powResult.getNonce());
+//        return block;
+//    }
+    public static Block newBlock(String previousHash, Transaction[] transactions) {
+        Block block = new Block("", previousHash, transactions, Instant.now().getEpochSecond(), 0);
         ProofOfWork pow = ProofOfWork.newProofOfWork(block);
         PowResult powResult = pow.run();
         block.setHash(powResult.getHash());
@@ -68,33 +90,77 @@ public class Block {
         return block;
     }
 
+//    public void addBlock(String data) throws Exception {
+//        String lastBlockHash = RocksDBUtils.getInstance().getLastBlockHash();
+//        if (StringUtils.isBlank(lastBlockHash)) {
+//            throw new Exception("Fail to add block into blockchain ! ");
+//        }
+//        this.addBlock(Block.newBlock(lastBlockHash, data));
+//    }
+
+    public static Block newBlock(Block block) {
+//        Block block = new Block("", previousHash, transactions, Instant.now().getEpochSecond(), 0);
+        ProofOfWork pow = ProofOfWork.newProofOfWork(block);
+        PowResult powResult = pow.run();
+        block.setHash(powResult.getHash());
+        block.setNonce(powResult.getNonce());
+        return block;
+    }
+
+
+//    /**
+//     * 计算区块Hash
+//     * <p>
+//     * 注意：在准备区块数据时，一定要从原始数据类型转化为byte[]，不能直接从字符串进行转换
+//     *
+//     * @return
+//     */
+//    private void setHash() {
+//        byte[] prevBlockHashBytes = {};
+//        if (StringUtils.isNoneBlank(this.getPreviousHash())) {
+//            prevBlockHashBytes = new BigInteger(this.getPreviousHash(), 16).toByteArray();
+//        }
+//
+//        byte[] headers = ByteUtils.merge(
+//                prevBlockHashBytes,
+//                this.getData().getBytes(),
+//                ByteUtils.toBytes(this.getTimeStamp()));
+//
+//        this.setHash(DigestUtils.sha256Hex(headers));
+//    }
+
     /**
-     * 计算区块Hash
-     * <p>
-     * 注意：在准备区块数据时，一定要从原始数据类型转化为byte[]，不能直接从字符串进行转换
+     * 对区块中的交易信息进行Hash计算
      *
      * @return
      */
-    private void setHash() {
-        byte[] prevBlockHashBytes = {};
-        if (StringUtils.isNoneBlank(this.getPreviousHash())) {
-            prevBlockHashBytes = new BigInteger(this.getPreviousHash(), 16).toByteArray();
+    public byte[] hashTransaction() {
+        byte[][] txIdArrays = new byte[this.getTransactions().length][];
+        for (int i = 0; i < this.getTransactions().length; i++) {
+            txIdArrays[i] = this.getTransactions()[i].getTxId();
         }
-
-        byte[] headers = ByteUtils.merge(
-                prevBlockHashBytes,
-                this.getData().getBytes(),
-                ByteUtils.toBytes(this.getTimeStamp()));
-
-        this.setHash(DigestUtils.sha256Hex(headers));
+        return new MerkleTree(txIdArrays).getRoot().getHash();
     }
+
     /**
      * <p> 创建创世区块 </p>
      *
      * @return
      */
-    public static Block newGenesisBlock() {
-        return Block.newBlock(ZERO_HASH, "Genesis Block");
+//    public static Block newGenesisBlock() {
+//        return Block.newBlock(ZERO_HASH, "Genesis Block");
+//    }
+    public static Block newGenesisBlock(Transaction coinbase) {
+        return Block.newBlock(ByteUtils.ZERO_HASH, new Transaction[]{coinbase});
+    }
+
+    public void mineBlock(Transaction[] transactions) throws Exception {
+        String lastBlockHash = RocksDBUtils.getInstance().getLastBlockHash();
+        if (lastBlockHash == null) {
+            throw new Exception("ERROR: Fail to get last block hash ! ");
+        }
+        Block block = Block.newBlock(lastBlockHash, transactions);
+        this.newBlock(block);
     }
 
 
