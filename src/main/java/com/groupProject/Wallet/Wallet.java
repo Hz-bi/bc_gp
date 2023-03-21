@@ -28,7 +28,7 @@ public class Wallet implements Serializable {
     /**
      * Private Key
      */
-    private PrivateKey privateKey;
+    private BCECPrivateKey privateKey;
     /**
      * Public Key
      */
