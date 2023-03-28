@@ -1,3 +1,5 @@
+package com.groupProject.Network;
+
 import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
@@ -6,7 +8,7 @@ import com.groupProject.Network.Node;
 import com.groupProject.Network.P2PNetwork;
 import com.groupProject.block.Block;
 import com.groupProject.block.Blockchain;
-import com.groupProject.Network.Transaction;
+import com.groupProject.Network.NetworkTransaction;
 import com.groupProject.Network.TransactionPool;
 import com.groupProject.utils.RocksDBUtils;
 
@@ -15,8 +17,8 @@ public class Main {
     private static P2PNetwork network;
     private static ExecutorService executor = Executors.newFixedThreadPool(10);
 
-    public static void main(String[] args) {
-        RocksDBUtils bc = RocksDBUtils.getInstance();
+    public static void main(String[] args) throws Exception {
+        Blockchain blockchain = Blockchain.newBlockchain(RocksDBUtils.getInstance().getLastBlockHash());
         TransactionPool transactionPool = new TransactionPool();
 
         // create a P2P network with 5 nodes
@@ -29,6 +31,7 @@ public class Main {
                 Block block = null;
                 try {
                     block = blockchain.mineBlock(transactionPool.getTransactions());
+
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -53,7 +56,7 @@ public class Main {
             while (true) {
                 System.out.print("Enter transaction amount: ");
                 double amount = scanner.nextDouble();
-                Transaction transaction = new Transaction("Alice", "Bob", amount);
+                NetworkTransaction transaction = new NetworkTransaction("Alice", "Bob", amount);
                 transactionPool.addTransaction(transaction);
                 System.out.println("Transaction added to pool.");
             }
