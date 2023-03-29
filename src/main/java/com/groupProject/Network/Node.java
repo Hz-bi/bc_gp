@@ -27,6 +27,12 @@ public class Node {
     }
 
     public void joinNetwork(Blockchain blockchain) {
+        // Check if the node is already in the network
+        if (network.contains(this)) {
+            System.out.println("Node already in the network");
+            return;
+        }
+
         // Connect to the network
         for (Node node : network) {
             try {
@@ -62,6 +68,7 @@ public class Node {
         // Save the blockchain reference
         this.blockchain = blockchain;
     }
+
     public void connectToNode(Node other) {
         // join the network of the other node
         other.joinNetwork(this.blockchain);
