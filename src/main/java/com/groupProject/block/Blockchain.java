@@ -304,10 +304,11 @@ public class Blockchain {
             }
         }
         String lastBlockHash = RocksDBUtils.getInstance().getLastBlockHash();
+        Block previousBlock = RocksDBUtils.getInstance().getBlock(lastBlockHash);
         if (lastBlockHash == null) {
             throw new Exception("ERROR: Fail to get last block hash ! ");
         }
-        Block block = Block.newBlock(lastBlockHash, transactions);
+        Block block = Block.newBlock(lastBlockHash, transactions, previousBlock.getIndex() + 1);
         this.addBlock(block);
         return block;
     }

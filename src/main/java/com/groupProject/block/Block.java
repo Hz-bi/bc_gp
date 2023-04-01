@@ -46,6 +46,10 @@ public class Block {
      * 工作量证明计数器
      */
     private long nonce;
+    /**
+     * 高度
+     */
+    private Integer index;
 
 //    public Block(String hash, String previousHash, String data, long timeStamp, long nonce) {
 //        this.hash = hash;
@@ -54,12 +58,13 @@ public class Block {
 //        this.timeStamp = timeStamp;
 //        this.nonce = nonce;
 //    }
-    public Block(String hash, String previousHash, Transaction[] transactions, long timeStamp, long nonce) {
+    public Block(String hash, String previousHash, Transaction[] transactions, long timeStamp, long nonce, Integer index) {
         this.hash = hash;
         this.previousHash = previousHash;
         this.transactions = transactions;
         this.timeStamp = timeStamp;
         this.nonce = nonce;
+        this.index = index;
     }
     public Block() {
 
@@ -81,12 +86,13 @@ public class Block {
 //        block.setNonce(powResult.getNonce());
 //        return block;
 //    }
-    public static Block newBlock(String previousHash, Transaction[] transactions) {
-        Block block = new Block("", previousHash, transactions, Instant.now().getEpochSecond(), 0);
+    public static Block newBlock(String previousHash, Transaction[] transactions, Integer index) {
+        Block block = new Block("", previousHash, transactions, Instant.now().getEpochSecond(), 0, index);
         ProofOfWork pow = ProofOfWork.newProofOfWork(block);
         PowResult powResult = pow.run();
         block.setHash(powResult.getHash());
         block.setNonce(powResult.getNonce());
+        block.setIndex(index);
         return block;
     }
 
@@ -150,18 +156,19 @@ public class Block {
 //    public static Block newGenesisBlock() {
 //        return Block.newBlock(ZERO_HASH, "Genesis Block");
 //    }
+
     public static Block newGenesisBlock(Transaction coinbase) {
-        return Block.newBlock(ByteUtils.ZERO_HASH, new Transaction[]{coinbase});
+        return Block.newBlock(ByteUtils.ZERO_HASH, new Transaction[]{coinbase}, 0);
     }
 
-    public void mineBlock(Transaction[] transactions) throws Exception {
-        String lastBlockHash = RocksDBUtils.getInstance().getLastBlockHash();
-        if (lastBlockHash == null) {
-            throw new Exception("ERROR: Fail to get last block hash ! ");
-        }
-        Block block = Block.newBlock(lastBlockHash, transactions);
-        this.newBlock(block);
-    }
+//    public void mineBlock(Transaction[] transactions) throws Exception {
+//        String lastBlockHash = RocksDBUtils.getInstance().getLastBlockHash();
+//        if (lastBlockHash == null) {
+//            throw new Exception("ERROR: Fail to get last block hash ! ");
+//        }
+//        Block block = Block.newBlock(lastBlockHash, transactions);
+//        this.newBlock(block);
+//    }
 
 
 }
