@@ -260,9 +260,10 @@ public class Blockchain {
     }
 
     /**
-     * 从交易输入中查询区块链中所有已被花费了的交易输出
+     * 從交易輸入中查詢區塊鏈中所有已被花費的交易輸出
      *
-     * @return 交易ID以及对应的交易输出下标地址
+     * @return 交易ID以及對應的交易輸出下標地址
+     * @throws Exception
      */
     private Map<String, int[]> getAllSpentTXOs() throws Exception {
         // 定义TxId ——> spentOutIndex[]，存储交易ID与已被花费的交易输出数组索引值
