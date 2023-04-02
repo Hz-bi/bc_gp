@@ -10,6 +10,7 @@ import com.groupProject.block.Block;
 import com.groupProject.block.Blockchain;
 import com.groupProject.Network.NetworkTransaction;
 import com.groupProject.Network.TransactionPool;
+import com.groupProject.transaction.Transaction;
 import com.groupProject.utils.RocksDBUtils;
 
 public class Main {
@@ -30,7 +31,13 @@ public class Main {
                 // create a new block
                 Block block = null;
                 try {
-                    block = blockchain.mineBlock(transactionPool.getTransactions());
+                    Transaction[] transactions = new Transaction[10];
+                    int i = 0;
+                    for(Transaction transaction : transactionPool.getPool()){
+                        transactions[i] = transaction;
+                        i++;
+                    }
+                    block = blockchain.mineBlock(transactions);
 
                 } catch (Exception e) {
                     throw new RuntimeException(e);
@@ -43,7 +50,7 @@ public class Main {
                 }
 
                 // clear the transaction pool
-                transactionPool.clear();
+//                transactionPool.clear();
 
                 // broadcast the new block to the network
                 Node.broadcastBlock(block);
@@ -56,8 +63,8 @@ public class Main {
             while (true) {
                 System.out.print("Enter transaction amount: ");
                 double amount = scanner.nextDouble();
-                NetworkTransaction transaction = new NetworkTransaction("Alice", "Bob", amount);
-                transactionPool.addTransaction(transaction);
+//                NetworkTransaction transaction = new NetworkTransaction("Alice", "Bob", amount);
+//                transactionPool.addTransaction(transaction);
                 System.out.println("Transaction added to pool.");
             }
         });

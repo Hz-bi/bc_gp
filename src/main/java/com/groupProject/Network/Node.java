@@ -36,7 +36,7 @@ public class Node {
         // Connect to the network
         for (Node node : network) {
             try {
-                Socket socket = new Socket(InetAddress.getByName(node.getAddress()), node.getPort());
+                Socket socket = new Socket(InetAddress.getLoopbackAddress(), node.getPort());
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 

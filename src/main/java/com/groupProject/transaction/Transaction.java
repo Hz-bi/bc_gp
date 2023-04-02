@@ -4,6 +4,7 @@ import com.groupProject.Wallet.Wallet;
 import com.groupProject.Wallet.WalletUtils;
 import com.groupProject.block.Blockchain;
 import com.groupProject.utils.BtcAddressUtils;
+import com.groupProject.utils.RocksDBUtils;
 import com.groupProject.utils.SerializeUtils;
 import lombok.*;
 import org.apache.commons.codec.binary.Hex;
@@ -192,8 +193,44 @@ public class Transaction {
 
         // 进行交易签名
         blockchain.signTransaction(newTx, senderWallet.getPrivateKey());
+//        for(TXInput input : txInputs){
+//            String txId = Hex.encodeHexString(input.getTxId());
+//            RocksDBUtils.getInstance().deleteUTXOs(txId);
+//        }
+//        updateUTXO(newTx);
 
         return newTx;
+    }
+
+    public static void updateUTXO(Transaction transaction){
+        for (TXInput txInput : transaction.getInputs()) {
+            // 余下未被使用的交易输出
+            TXOutput[] remainderUTXOs = {};
+            String txId = Hex.encodeHexString(txInput.getTxId());
+            TXOutput[] txOutputs = RocksDBUtils.getInstance().getUTXOs(txId);
+
+            if (txOutputs == null) {
+                continue;
+            }
+
+            for (int outIndex = 0; outIndex < txOutputs.length; outIndex++) {
+                if (outIndex != txInput.getTxOutputIndex()) {
+                    remainderUTXOs = ArrayUtils.add(remainderUTXOs, txOutputs[outIndex]);
+                }
+            }
+
+            // 没有剩余则删除，否则更新
+            if (remainderUTXOs.length == 0) {
+                RocksDBUtils.getInstance().deleteUTXOs(txId);
+            } else {
+                RocksDBUtils.getInstance().putUTXOs(txId, remainderUTXOs);
+            }
+        }
+
+    // 新的交易输出保存到DB中
+    TXOutput[] txOutputs = transaction.getOutputs();
+    String txId = Hex.encodeHexString(transaction.getTxId());
+    RocksDBUtils.getInstance().putUTXOs(txId, txOutputs);
     }
 
     /**判斷是否為Coinbase交易
